@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Random Dogs</title>
+</head>
+<body>
+    <section>
+        <div class="image">
+            <img src="lhasa.jpeg" alt="first-dog">
+        </div>
+        <div class="btn">
+            <button id='button'><marquee behavior="scroll" direction="left">Generate Dog</marquee></button>
+        </div>
+    </section>
+    
+    <script>
+        const btn = document.querySelector('#button');
+        const img = document.querySelector('.image');
+
+        function generateDog(){
+            fetch('https://random.dog/woof.json')
+                .then(res => res.json())
+                .then(data => {
+                    if(data.url.includes('.mp4')){
+                        generateDog()
+                    }else {
+                        img.innerHTML = `<img src="${data.url}" />`
+                    }
+                })
+        }
+
+        img.addEventListener('click', ()=>{
+            console.log('akerele');
+        })
+
+        btn.addEventListener('click', generateDog);
+    </script>
+</body>
+</html>
