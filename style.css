@@ -8,7 +8,7 @@ html {
 }
 body {
     height: 100vh;
-    background: blueviolet;
+    background-image: linear-gradient(to right, #8a2be2, #ef4667, #fff) ;
     display: grid;
     place-items: center;
 }
@@ -48,4 +48,14 @@ button {
 }
 marquee {
     width: 180px;
+}
+
+@media only screen and (max-width: 400px) {
+    body {
+        display: block;
+        padding: 80px 10px;
+    }
+    section {
+        width: unset;
+    }
 }
